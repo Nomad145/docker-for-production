@@ -1,0 +1,25 @@
+{
+    "name": "nomad145/docker-for-production",
+    "description": "A Docker Demonstration.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Michael Phillips",
+            "email": "michaeljoelphillips@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DockerForProduction\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    }
+}

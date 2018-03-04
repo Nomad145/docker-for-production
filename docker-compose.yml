@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: docker/nginx
+    ports:
+      - 80:80
+    links:
+      - fpm
+  fpm:
+    build: docker/fpm
