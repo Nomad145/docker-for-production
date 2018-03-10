@@ -10,7 +10,9 @@
     ],
     "require": {
         "botman/botman": "^2.3",
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "botman/driver-slack": "^2.1",
+        "symfony/cache": "^4.0"
     },
     "autoload": {
         "psr-4": {
