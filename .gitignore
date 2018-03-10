@@ -1,2 +1,4 @@
 vendor/
-tags
+tags*
+docker-compose.override.yml
+.env
