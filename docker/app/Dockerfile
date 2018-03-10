@@ -3,6 +3,7 @@ FROM composer:latest as builder
 WORKDIR /app
 COPY . /app
 RUN composer install --no-interaction --classmap-authoritative --no-dev --prefer-dist
+RUN cp .env.dist .env
 
 FROM alpine:latest
 

@@ -7,7 +7,7 @@ use BotMan\BotMan\BotManFactory;
 use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\Drivers\Slack\SlackDriver;
 use BotMan\BotMan\Cache\SymfonyCache;
-use Dotenv\Dotenv;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 /**
@@ -33,8 +33,8 @@ class App
 
     private function loadEnvironment()
     {
-        $dotenv = new Dotenv(__DIR__ . '/../');
-        $dotenv->load();
+        $dotenv = new Dotenv();
+        $dotenv->load(__DIR__ . '/../');
     }
 
     private function createBotMan() : BotMan
