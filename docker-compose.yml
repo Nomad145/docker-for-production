@@ -1,11 +1,17 @@
-version: '3'
+version: '2'
 
 services:
   web:
-    build: docker/nginx
+    image: 994642778742.dkr.ecr.us-east-1.amazonaws.com/dallasphpbot/nginx:latest
+    volumes_from:
+      - app
     ports:
       - 80:80
-    links:
-      - fpm
   fpm:
-    build: docker/fpm
+    image: php:7.2-fpm
+    volumes_from:
+      - app
+    ports:
+      - 9000:9000
+  app:
+    image: 994642778742.dkr.ecr.us-east-1.amazonaws.com/dallasphpbot:latest

@@ -7,3 +7,4 @@ RUN composer install --no-interaction --classmap-authoritative --no-dev --prefer
 FROM alpine:latest
 
 COPY --from=builder /app /app
+VOLUME /app
