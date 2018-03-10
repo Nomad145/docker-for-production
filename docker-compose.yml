@@ -13,5 +13,7 @@ services:
       - app
     ports:
       - 9000:9000
+    environment:
+      - SLACK_TOKEN
   app:
-    image: 994642778742.dkr.ecr.us-east-1.amazonaws.com/dallasphpbot:latest
+    image: ${IMAGE_REPO}:${TAG}
