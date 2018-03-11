@@ -34,7 +34,7 @@ class App
     private function loadEnvironment()
     {
         $dotenv = new Dotenv();
-        $dotenv->load(__DIR__ . '/../');
+        $dotenv->load(__DIR__ . '/../.env');
     }
 
     private function createBotMan() : BotMan
