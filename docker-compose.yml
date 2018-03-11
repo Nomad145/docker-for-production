@@ -16,4 +16,4 @@ services:
     environment:
       - SLACK_TOKEN
   app:
-    image: ${IMAGE_REPO}:${TAG}
+    image: ${DOCKER_REPO}:${TRAVIS_COMMIT}
