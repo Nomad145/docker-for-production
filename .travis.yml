@@ -4,9 +4,9 @@ php:
     - '7.2'
 before_script:
 install:
-  - docker build -t $DOCKER_REPO:$IMAGE_SLUG -f docker/app/Dockerfile .
+  - docker build -t $DOCKER_REPO:${TRAVIS_COMMIT::8} -f docker/app/Dockerfile .
 after_success:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
   - eval $(aws ecr get-login --region us-east-1)
-  - docker push $DOCKER_REPO:$IMAGE_SLUG
+  - docker push $DOCKER_REPO:${TRAVIS_COMMIT::8}
