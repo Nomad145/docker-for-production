@@ -3,12 +3,14 @@ services: docker
 php:
     - '7.2'
 before_script:
+  - pip install --user awscli
+  - sudo curl -o $HOME/local/bin https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
+  - export PATH=$PATH:$HOME/.local/bin
 install:
   - docker build -t $DOCKER_REPO:${TRAVIS_COMMIT::8} -f docker/app/Dockerfile .
 script:
   - echo "Tests run here!"
 after_success:
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
   - eval $(aws ecr get-login --region us-east-1 --no-include-email)
   - docker push $DOCKER_REPO:${TRAVIS_COMMIT::8}
+  - ecs-cli compose --project-name $PROJECT_NAME service up
