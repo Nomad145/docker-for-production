@@ -14,4 +14,4 @@ script:
 after_success:
   - eval $(aws ecr get-login --region us-east-1 --no-include-email)
   - docker push $DOCKER_REPO:${TRAVIS_COMMIT::8}
-  - ecs-cli compose --project-name $PROJECT_NAME --cluster-config $CLUSTER_NAME service up
+  - ecs-cli compose --project-name $PROJECT_NAME --cluster $CLUSTER_NAME service up
