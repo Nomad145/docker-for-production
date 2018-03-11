@@ -8,11 +8,12 @@ before_install:
   - chmod +x $HOME/.local/bin/ecs-cli
   - ecs-cli configure --cluster $CLUSTER_NAME --default-launch-type FARGATE
   - export PATH=$PATH:$HOME/.local/bin
+  - export IMAGE_TAG=${TRAVIS_COMMIT::8}
 install:
-  - docker build -t $DOCKER_REPO:${TRAVIS_COMMIT::8} -f docker/app/Dockerfile .
+  - docker build -t $DOCKER_REPO:$IMAGE_TAG -f docker/app/Dockerfile .
 script:
   - echo "Tests run here!"
 after_success:
   - eval $(aws ecr get-login --region us-east-1 --no-include-email)
-  - docker push $DOCKER_REPO:${TRAVIS_COMMIT::8}
+  - docker push $DOCKER_REPO:$IMAGE_TAG
   - ecs-cli compose --project-name $PROJECT_NAME service up
