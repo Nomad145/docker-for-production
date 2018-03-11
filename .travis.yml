@@ -5,6 +5,8 @@ php:
 before_script:
 install:
   - docker build -t $DOCKER_REPO:${TRAVIS_COMMIT::8} -f docker/app/Dockerfile .
+script:
+  - echo "Tests run here!"
 after_success:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
