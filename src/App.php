@@ -25,7 +25,7 @@ class App
         });
 
         $botman->hears('Say hi, BotMan!', function (BotMan $bot) {
-            $bot->reply('Welcome to Dallas PHP!');
+            $bot->reply('Hi, Dallas PHP!');
         });
 
         $botman->listen();
