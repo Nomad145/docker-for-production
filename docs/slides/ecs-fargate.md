@@ -11,25 +11,58 @@ Amazon abstracts the creation of servers away from the developer
 
 When using the CLI, services are created from the docker-compose file
 
+Let's go over some of the basics.
+
 
 
 ### Cluster
 EC2 or Fargate instances provisioned to handle running Docker Containers.
+
+Note:
+Containers can be spread across multiple EC2 instances
+
+Auto Scaling will allow for new EC2 instances to be added to the cluster dynamically
 
 
 
 ### Service
 Defines how many Tasks to run on a Cluster.
 
+Note:
+Also defines cluster health
+
 
 
 ### Task Definition
 The ECS version of a Docker Compose configuration.
 
+Note:
+ECS converts the compose file to JSON
+
+Accepts the same directives as docker-compose
+
 
 
 ### Task
 An instance of a Task Definition.
+
+Note:
+Like running multiple applications with docker-compose
+
+
+
+### Elastic Container Registry
+
+The Docker image registry for ECS.
+
+Note:
+You can run your own, but I wouldn't recommend it.
+
+Seperate services and the application code by namespace
+
+app/nginx:latest
+app/fpm:latest
+app:latest
 
 
 
@@ -40,6 +73,11 @@ $ ecs-cli configure --region us-east-1 --default-launch-type FARGATE
 $ ecs-cli up
 ```
 
+Note:
+Requires IAM roles setup in advance
+
+The tutorial walks you through a lot of that configuration
+
 
 
 ### Create a Service
@@ -48,6 +86,8 @@ ecs-cli compose --project-name my-application service up
 ```
 
 Note:
+
+Extra configuration is needed for load balancing and DNS
 
 Once you have the cluster and the service, you can start to customize the deployment.
 
