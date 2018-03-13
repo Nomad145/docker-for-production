@@ -28,6 +28,10 @@ class App
             $bot->reply('Hi, Dallas PHP!');
         });
 
+        $botman->hears('Say goodbye, BotMan!', function (BotMan $bot) {
+            $bot->reply('Goodbye, Dallas PHP!  Thanks for coming!');
+        });
+
         $botman->listen();
     }
 
